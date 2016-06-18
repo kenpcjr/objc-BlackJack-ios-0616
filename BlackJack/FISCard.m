@@ -44,13 +44,13 @@
         _cardLabel = cardSuitAndRank;
         
         NSArray *ranks = [FISCard validRanks];
-  
+        
         NSUInteger rankValue = [ranks indexOfObject:rank] + 1;
         if (rankValue <= 10) {
             _cardValue = rankValue;
         }else{
-        
-        _cardValue = 10;
+            
+            _cardValue = 10;
             
         }
     }
@@ -59,7 +59,7 @@
 }
 
 -(NSString *)description{
-    return _cardLabel;
+    return self.cardLabel;
 }
 
 @end

@@ -36,7 +36,18 @@
 
 -(NSString *)description{
     NSMutableString *newDescription = [[NSMutableString alloc]init];
-    [newDescription appendFormat:@"Player Name: %@\nCards in Hand: %@\nHas an Ace: %d\n Has Blackjack: %d\n Busted: %d\n Stayed: %d\n Current Handscore: %li\n Wins: %li\n Losses: %li", self.name, self.cardsInHand, self.aceInHand, self.blackjack, self.busted, self.stayed, self.handscore, self.wins, self.losses];
+    NSMutableArray *cardLabels = [[NSMutableArray alloc]init];
+    
+    for (NSUInteger i = 0; i < self.cardsInHand.count; i++) {
+        FISCard *currentCardForLabel = self.cardsInHand[i];
+        NSString *labelToAdd = [NSString stringWithFormat:@"%@",currentCardForLabel.cardLabel];
+
+        [cardLabels addObject:labelToAdd];
+    }
+    
+    
+    [newDescription appendFormat:@"Player Name: %@\nCards in Hand: %@\nHas an Ace: %d\n Has Blackjack: %d\n Busted: %d\n Stayed: %d\n Current Handscore: %li\n Wins: %li\n Losses: %li", self.name, cardLabels, self.aceInHand, self.blackjack, self.busted, self.stayed, self.handscore, self.wins, self.losses];
+    
     return newDescription;
 }
 
@@ -58,18 +69,18 @@
     if ([card.cardLabel containsString:@"A"] && self.handscore <= 11) {
         self.aceInHand = YES;
         self.handscore += 10;
-       
+        
     }else if ([card.cardLabel containsString:@"A"]){
         self.aceInHand = YES;
     }
     
     if (self.handscore == 21 && self.cardsInHand.count == 2) {
         self.blackjack = YES;
-        self.wins++;
+        
     }
     if (self.handscore > 21) {
         _busted =YES;
-        self.losses++;
+        
     }
     
 }

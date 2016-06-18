@@ -11,7 +11,7 @@
 @implementation FISCardDeck
 
 -(void) createDeck{
-
+    
     NSArray *ranksArray = [FISCard validRanks];
     NSArray *suitsArray = [FISCard validSuits];
     

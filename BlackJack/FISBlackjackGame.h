@@ -16,6 +16,8 @@
 @property (strong, nonatomic) FISBlackjackPlayer *house;
 @property (strong, nonatomic) FISBlackjackPlayer *player;
 
+-(instancetype)init;
+
 -(void)playBlackJack;
 -(void)dealNewRound;
 -(void)dealCardToPlayer;
